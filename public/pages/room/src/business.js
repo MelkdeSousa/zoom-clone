@@ -4,13 +4,11 @@ class Business {
     this.media = media
     this.view = view
     this.socketBuilder = socketBuilder
-      .setOnUserConnected(this.onUserConnected())
-      .setOnUserDisconnected(this.onUserDisconnected())
-      .build()
 
     this.socketBuilder.emit('join-room', this.room, 'u1')
 
     this.currentStream = {}
+    this.socket = {}
   }
 
   static initialize(deps) {
@@ -20,6 +18,11 @@ class Business {
 
   async _init() {
     this.currentStream = await this.media.getCamera()
+
+    this.socket = this.socketBuilder
+      .setOnUserConnected(this.onUserConnected())
+      .setOnUserDisconnected(this.onUserDisconnected())
+      .build()
 
     this.addVideoStream('Melk de Sousa')
   }
