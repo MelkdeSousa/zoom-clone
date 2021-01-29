@@ -1,9 +1,10 @@
 class Business {
-  constructor({ room, media, view, socketBuilder }) {
+  constructor({ room, media, view, socketBuilder, peerBuilder }) {
     this.room = room
     this.media = media
     this.view = view
     this.socketBuilder = socketBuilder
+    this.peerBuilder = peerBuilder
 
     this.socketBuilder.emit('join-room', this.room, 'u1')
 
