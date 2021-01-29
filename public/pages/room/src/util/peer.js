@@ -48,5 +48,3 @@ class PeerBuilder {
     )
   }
 }
-
-module.exports = PeerBuilder
